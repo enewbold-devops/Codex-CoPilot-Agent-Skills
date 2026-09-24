@@ -1,0 +1,3 @@
+interface:
+  display_name: "ENewbold Azure Identity Review"
+  short_description: "Review Azure identity, RBAC, Key Vault, and SQL access"

@@ -1,0 +1,5 @@
+# Merge this into ~/.codex/config.toml.
+# Do not replace unrelated model/provider/sandbox/approval settings.
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"

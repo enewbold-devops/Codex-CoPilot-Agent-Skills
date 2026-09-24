@@ -1,0 +1,3 @@
+interface:
+  display_name: "Architecture Impact Analysis"
+  short_description: "Analyze architecture impact before implementation"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "ENewbold ADR Authoring"
+  short_description: "Capture approved architecture decisions durably"
