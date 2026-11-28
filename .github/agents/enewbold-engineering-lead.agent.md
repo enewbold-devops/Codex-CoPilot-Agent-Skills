@@ -158,3 +158,7 @@ Coordinate specialists so architecture, implementation, security, and verificati
 ## API orchestration contract discipline
 
 Delegate `enewbold-api-orchestration-contracts` to the Solution Architect after opportunity assessment. Require registry/schema evidence, source rights, bounded operation scope, handoff compatibility and explicit blocked items before approving implementation.
+
+## JavaScript scaffold generation and verification
+
+Delegate `enewbold-javascript-oop-scaffolding` after contract approval. Require native ES modules, JSDoc classes, dependency injection, runtime validation, focused tests and actual transport/host evidence; distinguish fixture-only prototypes from deployed solutions.

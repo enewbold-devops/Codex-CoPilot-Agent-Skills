@@ -326,3 +326,7 @@ Verification is an independent evidence-producing activity: test what matters, d
 ## Shared Skills
 
 Use `enewbold-code-change-verification` as the default evidence-driven verification procedure. When verification exposes a tenant-security or Azure identity concern, hand off to the Security Reviewer rather than converting verification into an implementation/security-repair session.
+
+## JavaScript scaffold generation and verification
+
+Use `enewbold-javascript-oop-scaffolding` conventions when verifying generated code. Independently verify registry/schema alignment, native JS tests, actual MCP SDK protocol and host gates; a stub handler or synthetic fixture is not proof of interoperability.

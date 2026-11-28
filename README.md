@@ -4,7 +4,7 @@
 
 This shared engineering framework can be imported into MCP solution repositories. Select the applicable architecture profile before substantial work. Tier 1 public stateless MCP is the preferred candidate for public opportunities; enterprise and durable controls remain available.
 
-It provides a shared engineering constitution, six specialist workspace agents, and ten reusable skills that can be used from GitHub Copilot and OpenAI Codex in VS Code.
+It provides a shared engineering constitution, six specialist workspace agents, and eleven reusable skills that can be used from GitHub Copilot and OpenAI Codex in VS Code.
 
 ## Included
 
@@ -35,6 +35,7 @@ It provides a shared engineering constitution, six specialist workspace agents, 
 - `.agents/skills/enewbold-code-change-verification/`
 - `.agents/skills/enewbold-tier1-opportunity-assessment/`
 - `.agents/skills/enewbold-api-orchestration-contracts/`
+- `.agents/skills/enewbold-javascript-oop-scaffolding/`
 
 ### Setup guidance
 
@@ -64,3 +65,7 @@ See `CONFIGURE-COPILOT-CODEX.md` for detailed setup.
 Ask the Engineering Lead: `Use enewbold-tier1-opportunity-assessment to assess this organization and public API documentation. Produce the evidence-backed opportunity brief and gate matrix; do not implement code.`
 
 Use the actual source URLs and non-sensitive inputs. A candidate or bounded prototype is not a release approval. Verify skill discovery in both harnesses separately.
+
+## Contract-driven JavaScript scaffolding
+
+After Tier 1 qualification, use `enewbold-api-orchestration-contracts` to produce the approved operation/tool/handoff registry and then `enewbold-javascript-oop-scaffolding` to implement native JavaScript classes. The bundled reference core runs offline with `npm test`; it is not a deployed MCP server. Verify real SDK protocol and hosting gates separately.

@@ -346,3 +346,7 @@ Do not use a skill to bypass architecture or security escalation requirements.
 ## API orchestration contract discipline
 
 Consume the approved `enewbold-api-orchestration-contracts` registry, versioned schemas, operation mappings and verification matrix before implementing tool sequences or adapters. Never infer missing endpoints or handoff fields; route unresolved contracts to the Architect.
+
+## JavaScript scaffold generation and verification
+
+Use `enewbold-javascript-oop-scaffolding` for new or materially revised MCP scaffolds after approved orchestration contracts. Adapt the fixture reference core to actual schemas and provider/SDK/host constraints; never expose the synthetic example or a stub transport as a public service.
