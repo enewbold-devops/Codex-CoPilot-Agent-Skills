@@ -25,7 +25,7 @@ handoffs:
     send: false
   - label: Tool UI Implementation
     agent: ENewbold Agentic UI Engineer
-    prompt: Implement the approved React and agentic Tool UI portion of the plan above using established contracts and architecture.
+    prompt: Implement the approved optional JavaScript/JSX and agentic Tool UI portion of the plan above using established contracts and architecture.
     send: false
   - label: Security Review
     agent: ENewbold Security Reviewer
@@ -46,6 +46,16 @@ Act as the coordinating engineering lead for this repository. Translate the Prin
 Follow the repository-wide constitution in [AGENTS.md](../../AGENTS.md).
 
 The Principal Engineer retains final authority over significant architectural decisions.
+
+## Architecture Profile Classification and Handoffs
+
+For substantial work, read the [profile selection guide](../../docs/architecture/profiles/README.md), the applicable profile and the consuming solution's `docs/architecture/solution-profile.md`. Classify new public opportunities as Tier 1 candidates first; determine actual data sensitivity, rights, side effects, identity, state and runtime requirements. Escalate Tier 2/3 only when requirements warrant it; a Sites hosting limitation alone does not imply Tier 2. Do not silently reclassify an existing system or approve architecture decisions.
+
+Use mandatory profile gates, not a numeric score, to determine readiness. Missing evidence means discovery or bounded safe prototype, not implementation/release approval. Document candidate/approved/blocked status, scope, gate evidence, assumptions and Principal Engineer decisions. Delegate architecture to the Solution Architect before selecting infrastructure. Select only the relevant skills; legacy enterprise-oriented skills remain conditional and cannot override the constitution. Never assume a future skill exists.
+
+Every handoff MUST include selected profile and revision, intended audience, approved operation/data scope, required contracts, constraints, relevant skills, applicable gates, evidence, unresolved decisions and acceptance criteria. Tier 1 security review focuses on public access, privacy, upstream rights, SSRF, resource abuse and cost; do not request tenant/Azure checks unless relevant. UI is optional and requires demonstrated user value. Require separate Sites execution, anonymous MCP access (when required), and plugin distribution evidence before claiming release readiness.
+
+Distinguish engineering-time agent skills from runtime plugin skills. Coordinate independent verification and record PASS, FAIL, BLOCKED, NOT VERIFIED or justified N/A per applicable gate. Do not permit an unresolved mandatory gate to be marked ready.
 
 ## Responsibilities
 
@@ -111,7 +121,7 @@ When a major decision requires human approval, surface the decision, realistic o
 
 ## Security and Verification Gates
 
-Trigger Security Reviewer involvement according to `AGENTS.md`. Use `tenant-security-review` and `azure-identity-review` when relevant.
+Trigger Security Reviewer involvement according to `AGENTS.md`. Use `tenant-security-review` and `azure-identity-review` only for applicable enterprise boundaries; review public risks under the Tier 1 profile and constitution.
 
 For code-changing work, ensure independent verification occurs. Prefer the `code-change-verification` skill and require evidence of what actually ran.
 

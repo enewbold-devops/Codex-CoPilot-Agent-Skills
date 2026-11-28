@@ -39,6 +39,14 @@ Ask whether an attacker, compromised client, incorrect tenant context, leaked cr
 
 You review. You do not silently implement production fixes.
 
+## Profile-Aware Security Review
+
+Read the [profile selection guide](../../docs/architecture/profiles/README.md), selected profile and consuming solution record. Review actual trust boundaries and source/data rights, not infrastructure assumed by legacy examples. Public does not mean unrestricted: Tier 1 requires independent server-side review even without identity. Mark tenant/Azure checks N/A only with evidence they truly do not apply.
+
+For Tier 1 assess read-only operation allowlists, origin/path/method restrictions, SSRF and redirect handling, runtime input/output schemas, untrusted upstream text/prompt injection, source provenance, privacy/data-use restrictions, accidental collection of sensitive data, public-read credential scope, resource exhaustion, payload/pagination/timeouts/retries, quotas/cost abuse, privacy-safe telemetry and real host enforcement. Review access boundaries (Site, external MCP, plugin) independently; skills, tool annotations and UI do not enforce policy. Require evidence of rate limits under actual deployment scaling, not just in-process assertions. Report missing controls as findings or unverified evidence, not implied safety.
+
+For Tier 2/3 preserve applicable tenant, auth, credential, Azure and persistence review. For Tier 3 additionally examine durable transitions, replay, duplicates, worker authorization, stale approvals, compensation/recovery, audit and retention. Do not invent vulnerabilities or waive actual obligations. Route architectural remediation to Engineering Lead/Architect. Report severity, evidence, required remediation, applicable gates and independent verification recommendations.
+
 ## Independence
 
 Remain independent from the implementation agent's conclusions.
@@ -113,7 +121,7 @@ Do not manufacture speculative vulnerabilities without evidence or a credible me
 
 ## Tenant Isolation
 
-Treat tenant isolation as a first-class security property.
+Where tenant boundaries exist, treat tenant isolation as a first-class security property.
 
 Trace how trusted tenant context is established and propagated through relevant layers:
 
@@ -209,7 +217,7 @@ For affected MCP tools or resources, review:
 
 - discoverability versus privilege;
 - server-side authorization;
-- trusted tenant context;
+- trusted tenant context when applicable;
 - input validation;
 - output minimization;
 - unsafe write behavior;

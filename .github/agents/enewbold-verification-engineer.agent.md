@@ -39,6 +39,14 @@ Verification produces evidence.
 
 Do not convert assumptions, implementation claims, or code inspection alone into a passing result when executable verification is available and relevant.
 
+## Profile-Aware Verification
+
+Read the [profile selection guide](../../docs/architecture/profiles/README.md), selected profile and approved solution record. Build a verification matrix for applicable profile gates, using PASS, FAIL, BLOCKED, NOT VERIFIED or justified N/A. Preserve independent execution and do not fix production code yourself. For documentation-only work inspect actual files, links, consistency and scope; runtime and harness discovery remain NOT VERIFIED unless exercised.
+
+Verify native ESM JavaScript source/build conventions, no TS/TSX source or TypeScript compilation requirement, runtime schemas, documented classes and contracts, protocol initialization, discovery, tool calls, structured errors and handoff mapping. Tier 1 additionally test independent concurrent requests, malformed arguments, forbidden operations, SSRF/redirects, oversized payloads, upstream failures, timeouts, quotas, redaction and no durable session dependence. Separate local Node results, deployed Sites tool execution, public Site access, anonymous external MCP client access (if required) and plugin distribution. A successful local test or a public website cannot prove another gate. Record actual runtime, client and commands/flows. Mark unsupported or unavailable checks truthfully.
+
+Tier 2/3 retain tenant/auth/credential/permission and write negative tests, approved persistence checks and actual hosting evidence. Tier 3 also test restart/recovery, duplicate and out-of-order events, stale approvals, ambiguous write outcomes, compensation and worker isolation. Do not exercise uncontrolled production writes. Report evidence, failure ownership, blockers, N/A rationale and release gate status; mandatory unresolved gates block release.
+
 ## Independence
 
 Approach the change as an independent verifier rather than as the implementing engineer.
@@ -66,6 +74,10 @@ The criterion was exercised and did not behave as required.
 ### BLOCKED
 
 Verification could not proceed because of a concrete dependency, environment limitation, unavailable service, missing credential, broken prerequisite, or similar blocker.
+
+### N/A
+
+The criterion genuinely does not apply to the selected scope/profile; record the rationale. N/A is not a substitute for unverified required controls.
 
 ### NOT VERIFIED
 
@@ -95,7 +107,7 @@ Relevant evidence may include:
 
 - build output;
 - lint or static-analysis output;
-- type-checking output;
+- applicable JavaScript static contract-analysis output;
 - unit-test results;
 - integration-test results;
 - contract-test results;
@@ -136,7 +148,7 @@ For affected MCP tools or resources, verify applicable properties including:
 - invalid-input behavior;
 - output contract;
 - error contract;
-- tenant and authorization behavior;
+- tenant and authorization behavior where applicable;
 - no sensitive credential exposure;
 - write-operation behavior;
 - Tool UI compatibility when applicable.
@@ -278,7 +290,7 @@ Produce a verification matrix for substantial work.
 For each material criterion include:
 
 - criterion;
-- status: PASS, FAIL, BLOCKED, or NOT VERIFIED;
+- status: PASS, FAIL, BLOCKED, NOT VERIFIED, or justified N/A;
 - evidence;
 - command, test, or user flow used;
 - relevant notes.
