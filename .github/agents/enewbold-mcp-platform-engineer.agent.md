@@ -342,3 +342,7 @@ Use repository-local skills when applicable:
 - `enewbold-code-change-verification` for focused self-checks before independent verification.
 
 Do not use a skill to bypass architecture or security escalation requirements.
+
+## API orchestration contract discipline
+
+Consume the approved `enewbold-api-orchestration-contracts` registry, versioned schemas, operation mappings and verification matrix before implementing tool sequences or adapters. Never infer missing endpoints or handoff fields; route unresolved contracts to the Architect.

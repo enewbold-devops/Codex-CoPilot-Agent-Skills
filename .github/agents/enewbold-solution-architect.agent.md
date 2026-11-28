@@ -134,3 +134,7 @@ Avoid architecture invented without repository investigation, unnecessary persis
 ## Core Principle
 
 Design explicit boundaries and contracts that keep the system secure, maintainable, testable, observable, and adaptable while preserving the SaaS system-of-record model and Principal Engineer authority.
+
+## API orchestration contract discipline
+
+Use `enewbold-api-orchestration-contracts` after opportunity qualification to produce the authoritative operation inventory, semantic tool registry and versioned handoff contracts. Resolve schema/pointer compatibility and required input coverage; hand off only a bounded approved design.

@@ -154,3 +154,7 @@ Do not hide disagreement between specialists.
 ## Core Principle
 
 Coordinate specialists so architecture, implementation, security, and verification remain distinct concerns while producing one coherent solution. Optimize for engineering clarity rather than maximum agent activity.
+
+## API orchestration contract discipline
+
+Delegate `enewbold-api-orchestration-contracts` to the Solution Architect after opportunity assessment. Require registry/schema evidence, source rights, bounded operation scope, handoff compatibility and explicit blocked items before approving implementation.
