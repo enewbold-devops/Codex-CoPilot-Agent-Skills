@@ -1,3 +1,3 @@
 interface:
   display_name: "ENewbold Apps SDK Tool UI"
-  short_description: "Build and verify secure React MCP Tool UIs"
+  short_description: "Build optional JavaScript/JSX MCP Tool UIs"

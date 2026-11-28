@@ -1,6 +1,6 @@
 ---
 name: enewbold-code-change-verification
-description: Independently verify code changes against stated acceptance criteria and repository engineering requirements. Use after implementation, before declaring work complete, or when asked to validate a fix, refactor, MCP contract, SaaS integration, security-sensitive change, or React/Tool UI behavior. Determine the smallest sufficient verification set, execute available builds/tests/static checks/browser flows, include negative cases where risk requires them, and report each claim as PASS, FAIL, BLOCKED, or NOT VERIFIED without silently repairing production code.
+description: Independently verify changes for all MCP profiles against acceptance criteria, JavaScript standards and architecture gates. Use for code, documentation, contracts, public API/enterprise integrations, durable workflows, Sites, UI or security verification. Execute focused checks and negative cases; distinguish local, hosted, external MCP and plugin evidence using PASS, FAIL, BLOCKED, NOT VERIFIED or justified N/A.
 ---
 
 # Code Change Verification
@@ -17,8 +17,17 @@ Use only these statuses for verification claims:
 - `FAIL`: the check executed and demonstrated incorrect behavior.
 - `BLOCKED`: the check should be performed but cannot run because of a concrete dependency or environment blocker.
 - `NOT VERIFIED`: the claim was not tested or otherwise established.
+- `N/A`: the criterion genuinely does not apply; document evidence/rationale. Never use N/A for an untested mandatory gate.
 
 Never convert `BLOCKED` or `NOT VERIFIED` into `PASS` based on code appearance.
+
+## Profile applicability and invariants
+
+Read the [profile selection guide](../../../docs/architecture/profiles/README.md), selected profile and solution record. Map verification criteria to mandatory profile gates. Documentation-only work verifies actual files, links, identifiers and consistency; runtime and harness discovery require separate execution evidence.
+
+For implementation check native ESM JavaScript, documented classes/contracts, runtime schemas, absence of TS/TSX source or TypeScript compilation, runtime/SDK compatibility and actual MCP initialization, discovery, calls and errors where applicable. Tier 1 additionally verify public read-only allowlists, data scope/rights, SSRF/redirects, malformed/oversized inputs and responses, upstream errors, quotas, timeouts, safe logs and independent concurrent requests. Separate local Node tests, deployed Sites execution/live approved read, public Site access, anonymous external MCP access (when required) and intended plugin distribution/installation. Record actual runtime/client/SDK and flow; one boundary does not prove another.
+
+Tier 2/3 retain applicable auth, tenant, credential, write, migration and hosting checks. Tier 3 additionally tests duplicates/out-of-order events, restart/recovery, stale approvals, ambiguous writes, compensation, worker isolation and audit. Use safe approved environments. Mandatory unresolved gates block release; N/A requires evidence.
 
 ## Workflow
 
@@ -36,7 +45,7 @@ Never convert `BLOCKED` or `NOT VERIFIED` into `PASS` based on code appearance.
    Choose applicable checks from:
    - linting;
    - formatting checks when enforced by the repository;
-   - type checking/static analysis;
+   - JavaScript static analysis and runtime contract validation;
    - build validation;
    - unit tests;
    - integration tests;
@@ -64,7 +73,7 @@ Never convert `BLOCKED` or `NOT VERIFIED` into `PASS` based on code appearance.
 
 6. Verify MCP contracts explicitly when changed.
    - Validate input rejection and output shape.
-   - Validate authorization/tenant behavior.
+   - Validate public policy or applicable authorization/tenant behavior.
    - Validate stable error semantics.
    - Validate that sensitive credentials are absent from outputs and logs available to the test.
 
@@ -102,7 +111,7 @@ Distinguish simulated, sandbox, and production-adjacent verification where relev
 
 The overall result is:
 
-- `PASS` only when all acceptance-critical checks pass and no blocking required check remains;
+- `PASS` only when all applicable acceptance-critical checks pass and no blocking required check remains; justified N/A criteria are excluded;
 - `FAIL` when any acceptance-critical check fails;
 - `BLOCKED` when completion depends on a required check that cannot be executed;
 - `NOT VERIFIED` when requested verification was not performed sufficiently to establish the result.

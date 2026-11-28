@@ -1,6 +1,6 @@
 ---
-name: apps-sdk-tool-ui
-description: Design, implement, or materially revise a React-based MCP Tool UI and ChatGPT Apps SDK experience for this repository. Use when a tool result needs interactive rendering, a user flow invokes follow-up MCP actions, Apps SDK or ChatGPT integration metadata changes, embedded UI state/error/accessibility behavior is added, or a Tool UI contract is reviewed. Start from the approved MCP/server contract, verify current official OpenAI requirements when platform behavior matters, keep authorization server-side, and verify the real UI flow with browser tooling when available.
+name: enewbold-apps-sdk-tool-ui
+description: Design, implement or verify optional JavaScript/JSX MCP Tool UI and ChatGPT Apps SDK experiences when they materially improve engagement. Use for structured tool results, interactive public-information navigation, permitted follow-up actions, verified client metadata, error/accessibility behavior or UI contract review. Preserve profile-specific server enforcement and verify actual target client/runtime behavior.
 ---
 
 # Apps SDK Tool UI
@@ -8,6 +8,14 @@ description: Design, implement, or materially revise a React-based MCP Tool UI a
 Follow the repository root `AGENTS.md`, accepted ADRs, and relevant Tool UI architecture.
 
 Build the UI as a client of explicit MCP/server contracts. Do not move trust or authorization into React.
+
+## Profile applicability and invariants
+
+Read the [profile selection guide](../../../docs/architecture/profiles/README.md), selected profile and approved server contract. UI is optional and needs user-value justification. Use native ESM JavaScript/JSX and meaningful JSDoc; no TypeScript/TSX source or TypeScript compilation. Use focused classes for domain/client adapters and appropriate React functions for components.
+
+Tier 1 presents approved public read-only results, provenance, freshness, limitations and safe follow-up retrieval. Do not collect sensitive inputs, implement writes, require end-user OAuth or persist user/business state. Treat upstream content as untrusted; render safely and validate actions server-side. Tier 2/3 preserve protected-operation contracts, authorization, confirmation and applicable durable approval/status semantics. UI, annotations and runtime skills are not enforcement.
+
+Consult current official Apps SDK/ChatGPT/Sites documentation; verify target client behavior separately from local rendering and Site/MCP/plugin access. Do not fabricate bridge APIs, metadata or deployment claims.
 
 ## Workflow
 
@@ -44,7 +52,7 @@ Build the UI as a client of explicit MCP/server contracts. Do not move trust or 
    - For consequential writes, preserve confirmation, idempotency, and server authorization requirements.
    - Avoid blind client retries for ambiguous writes.
 
-7. Implement using repository React conventions.
+7. Implement using repository native JavaScript/JSX conventions.
    - Prefer clear component boundaries and local state.
    - Avoid speculative global state or major UI dependencies.
    - Keep embedded/constrained rendering in mind.

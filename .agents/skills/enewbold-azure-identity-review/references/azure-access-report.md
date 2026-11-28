@@ -27,3 +27,6 @@ List permissions or live configuration that could not be established.
 
 ## Required Follow-up
 Identify responsible role and verification required after changes.
+
+## Profile Applicability
+Record selected profile, approved Azure dependency and evidence. If absent, record N/A rationale and route non-Azure security review. Include asynchronous and deployment identities in the access matrix when applicable.

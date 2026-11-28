@@ -32,4 +32,12 @@
 - Important responsive/constrained state checked when applicable.
 
 ## Verification Status
-Record `PASS`, `FAIL`, `BLOCKED`, or `NOT VERIFIED` for material acceptance criteria.
+Record `PASS`, `FAIL`, `BLOCKED`, `NOT VERIFIED`, or justified `N/A` for material acceptance criteria.
+
+## Profile and Runtime Compatibility
+- Profile, approved user value and target clients recorded.
+- Native JavaScript/JSX and JSDoc verified; no TS/TSX.
+- Tier 1 only approved public reads, safe rendering, provenance, no sensitive inputs/writes/durable user state.
+- Applicable enterprise authorization, confirmation and durable status controls retained.
+- Actual target client/bridge and plugin access evidence separated from local browser/build.
+- Record status and justified N/A.
