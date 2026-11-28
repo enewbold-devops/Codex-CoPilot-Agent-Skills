@@ -142,3 +142,7 @@ Use `enewbold-api-orchestration-contracts` after opportunity qualification to pr
 ## Runtime plugin workflow orchestration
 
 Use `enewbold-plugin-skill-orchestration` to derive bounded intent/topic routes from the approved versioned tool/handoff registry. Define required inputs, stops, grounding and optional resources/prompts; keep model guidance separate from server policy.
+
+## Public MCP security review
+
+Use `enewbold-public-mcp-security-review` findings to resolve architecture and threat-model decisions. If required host security/limits cannot be proven, propose bounded staging, redesign or approved alternative stateless hosting ADR; reclassify only if requirements change.

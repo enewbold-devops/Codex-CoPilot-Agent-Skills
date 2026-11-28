@@ -358,3 +358,7 @@ Implement approved domain runtime workflows with `enewbold-plugin-skill-orchestr
 ## Sites deployment and access gates
 
 Use `enewbold-chatgpt-sites-deployment` for approved Sites builds and host adapters. Verify the actual JS-compatible template, SDK protocol, trusted ingress/Host/Origin controls and runtime limits; do not publish or assume external endpoint access without authorization/evidence.
+
+## Public MCP security review
+
+Consume findings from `enewbold-public-mcp-security-review`; implement approved remediation in native ESM JavaScript and return it for independent retest. Do not treat annotations/skills or per-process counters as production controls.

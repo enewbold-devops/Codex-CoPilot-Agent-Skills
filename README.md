@@ -4,7 +4,7 @@
 
 This shared engineering framework can be imported into MCP solution repositories. Select the applicable architecture profile before substantial work. Tier 1 public stateless MCP is the preferred candidate for public opportunities; enterprise and durable controls remain available.
 
-It provides a shared engineering constitution, six specialist workspace agents, and thirteen reusable skills that can be used from GitHub Copilot and OpenAI Codex in VS Code.
+It provides a shared engineering constitution, six specialist workspace agents, and fourteen reusable skills that can be used from GitHub Copilot and OpenAI Codex in VS Code.
 
 ## Included
 
@@ -38,6 +38,7 @@ It provides a shared engineering constitution, six specialist workspace agents, 
 - `.agents/skills/enewbold-javascript-oop-scaffolding/`
 - `.agents/skills/enewbold-plugin-skill-orchestration/`
 - `.agents/skills/enewbold-chatgpt-sites-deployment/`
+- `.agents/skills/enewbold-public-mcp-security-review/`
 
 ### Setup guidance
 
@@ -75,3 +76,7 @@ After Tier 1 qualification, use `enewbold-api-orchestration-contracts` to produc
 ## Runtime plugin workflows
 
 Use `enewbold-plugin-skill-orchestration` after contract approval to derive domain-specific skills and bounded intent/tool/handoff routes. Keep engineering skills out of distributable runtime plugins; verify actual installed skills and client behavior separately.
+
+## Tier 1 release readiness
+
+Use `enewbold-public-mcp-security-review` and `enewbold-chatgpt-sites-deployment` to review public controls and verify actual deployment. Separate local SDK, hosted execution, Site access, anonymous external MCP and plugin distribution evidence. A successful build, public Site or security checklist is not proof of release readiness. Public exposure and distribution require explicit authority.

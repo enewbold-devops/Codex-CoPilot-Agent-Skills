@@ -79,3 +79,7 @@ Record evidence and PASS/FAIL/BLOCKED/NOT VERIFIED/justified N/A. Test resources
 ## 7. Documentation sources to verify at implementation
 
 Consult current official [ChatGPT Sites documentation](https://learn.chatgpt.com/docs/sites), [hosting a plugin with ChatGPT Sites](https://help.openai.com/en/articles/20001547-hosting-a-plugin-with-chatgpt-sites), [OpenAI developer documentation](https://developers.openai.com/) and [MCP specification](https://modelcontextprotocol.io/). Use the configured official OpenAI docs MCP server when available. Record dated evidence of the actual supported deployment path and permissions. This profile is not deployment evidence.
+
+## 8. Engineering skill routing
+
+After approved API contracts, use [runtime plugin orchestration](../../../.agents/skills/enewbold-plugin-skill-orchestration/SKILL.md) for domain workflows, [public MCP security review](../../../.agents/skills/enewbold-public-mcp-security-review/SKILL.md) for independent public boundary review, and [Sites deployment](../../../.agents/skills/enewbold-chatgpt-sites-deployment/SKILL.md) for authorized staging and independent release evidence. Publication authority and mandatory gates remain unchanged.

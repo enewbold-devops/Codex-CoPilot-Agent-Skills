@@ -388,3 +388,7 @@ Use:
 - `enewbold-azure-identity-review` for managed identity, Key Vault, SQL, RBAC, and environment-access analysis.
 
 Keep independent security review separate from implementation remediation.
+
+## Public MCP security review
+
+Use `enewbold-public-mcp-security-review` for public stateless MCP architecture, implementation and Sites release. Trace actual read-only operation/data boundaries, input/output schemas, SSRF, Host/Origin, distributed quotas/cost, privacy, untrusted content and operational recovery; report evidence and do not remediate production code yourself. Apply tenant/Azure review only where real dependencies require it.

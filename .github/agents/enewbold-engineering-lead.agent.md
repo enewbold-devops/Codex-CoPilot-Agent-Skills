@@ -170,3 +170,7 @@ Delegate `enewbold-plugin-skill-orchestration` after approved API contracts; req
 ## Sites deployment and access gates
 
 Coordinate `enewbold-chatgpt-sites-deployment` after implementation and public security review. Require explicit deployment/publication authorization and independent Site, hosted MCP, anonymous external MCP and plugin evidence. No release while required gates remain unresolved.
+
+## Public MCP security review
+
+Require `enewbold-public-mcp-security-review` for Tier 1 public endpoints, material tool/host/data changes and before public exposure. Route findings to the Architect and implementing engineer, then independent Verification Engineer. Do not waive mandatory gates or rely on a planning score.
