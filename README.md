@@ -1,16 +1,18 @@
-# Azure MCP DevOps Agents - Unified Copilot/Codex Workspace
+# AI Engine Agentic Solution Engineering Framework - Unified Copilot/Codex Workspace
 
 ## AI Engine | developer@e-newbold.com
 
-This bundle is designed to be copied into the root of the Azure MCP DevOps Agents repository.
+This shared engineering framework can be imported into MCP solution repositories. Select the applicable architecture profile before substantial work. Tier 1 public stateless MCP is the preferred candidate for public opportunities; enterprise and durable controls remain available.
 
-It provides a shared engineering constitution, six specialist workspace agents, and eight reusable skills that can be used from GitHub Copilot and OpenAI Codex in VS Code.
+It provides a shared engineering constitution, six specialist workspace agents, and nine reusable skills that can be used from GitHub Copilot and OpenAI Codex in VS Code.
 
 ## Included
 
 ### Repository constitution
 
 - `AGENTS.md`
+- [Architecture profiles](docs/architecture/profiles/README.md)
+- [ADR-001 (Proposed)](docs/adr/ADR-001-tiered-engineering-profiles.md)
 
 ### Workspace agents
 
@@ -31,16 +33,16 @@ It provides a shared engineering constitution, six specialist workspace agents, 
 - `.agents/skills/enewbold-azure-identity-review/`
 - `.agents/skills/enewbold-apps-sdk-tool-ui/`
 - `.agents/skills/enewbold-code-change-verification/`
+- `.agents/skills/enewbold-tier1-opportunity-assessment/`
 
 ### Setup guidance
 
 - `CONFIGURE-COPILOT-CODEX.md`
-- `WORKSPACE-MANIFEST.md`
 - `setup-examples/`
 
 ## Import
 
-Extract this archive and copy its contents into the **repository root**. Preserve the hidden `.github` and `.agents` directories.
+Extract this archive and copy its contents into the **repository root**. Preserve the hidden `.github` and `.agents` directories, and include `docs/architecture/profiles/` and applicable ADRs. Record the consuming solution profile; do not overwrite accepted project decisions.
 
 If your repository already contains `AGENTS.md`, `.github/agents/`, `.agents/skills/`, or VS Code/MCP configuration, merge deliberately instead of overwriting existing project guidance.
 
@@ -55,3 +57,9 @@ Do not copy `setup-examples/*` into active configuration locations blindly. The 
 5. Verify that the root `AGENTS.md`, agents, and skills are discovered before starting implementation work.
 
 See `CONFIGURE-COPILOT-CODEX.md` for detailed setup.
+
+## Tier 1 discovery entrypoint
+
+Ask the Engineering Lead: `Use enewbold-tier1-opportunity-assessment to assess this organization and public API documentation. Produce the evidence-backed opportunity brief and gate matrix; do not implement code.`
+
+Use the actual source URLs and non-sensitive inputs. A candidate or bounded prototype is not a release approval. Verify skill discovery in both harnesses separately.

@@ -57,6 +57,8 @@ Every handoff MUST include selected profile and revision, intended audience, app
 
 Distinguish engineering-time agent skills from runtime plugin skills. Coordinate independent verification and record PASS, FAIL, BLOCKED, NOT VERIFIED or justified N/A per applicable gate. Do not permit an unresolved mandatory gate to be marked ready.
 
+For a new organization, industry, public API or proposed public agentic service, invoke `enewbold-tier1-opportunity-assessment` before substantial solution design. Own the opportunity brief and mandatory gate matrix; delegate technical validation to the Solution Architect. Require evidence-backed scope and a decision (design, bounded prototype, blocked, redesign/reclassify or reject), not a score-based approval. Keep release evidence separate.
+
 ## Responsibilities
 
 - understand the requested outcome and acceptance criteria;

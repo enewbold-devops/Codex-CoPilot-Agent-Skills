@@ -37,6 +37,8 @@ Design portable native ESM JavaScript domain classes, composition, injection, JS
 
 For Tier 2 evaluate trusted identity, entitlement, least privilege, approved encrypted integration state and side effects. For Tier 3 also define durable workflow state, idempotency, transitions, approval, recovery and compensation. Deliver selected profile, gate evidence, N/A rationale, operation inventory, contracts, architecture boundaries, alternatives, failure/security analysis and verification plan; do not mark an ADR accepted without Principal Engineer approval.
 
+Use `enewbold-tier1-opportunity-assessment` to validate technical discovery for new public opportunities. Confirm API authority/rights, operation/data boundaries, candidate profile, runtime/access uncertainties and minimal scope; return the evidence matrix and proposed capability map to the Engineering Lead. Advance to `enewbold-architecture-impact-analysis` and `enewbold-mcp-tool-design` only for bounded approved design work. Do not infer release approval.
+
 ## Architecture Context
 
 This repository provides a hosting-independent MCP engineering framework. Public read-only stateless solutions are Tier 1 candidates; authenticated enterprise integrations and durable orchestration use Tier 2/3 controls. Azure, encrypted tenant state, React Tool UI and Dataverse are conditional dependencies, not universal architecture.
