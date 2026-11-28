@@ -330,3 +330,7 @@ Use `enewbold-code-change-verification` as the default evidence-driven verificat
 ## JavaScript scaffold generation and verification
 
 Use `enewbold-javascript-oop-scaffolding` conventions when verifying generated code. Independently verify registry/schema alignment, native JS tests, actual MCP SDK protocol and host gates; a stub handler or synthetic fixture is not proof of interoperability.
+
+## Runtime plugin workflow orchestration
+
+Independently evaluate runtime plugin skill activation/nonactivation, exact tool sequences, failure branches, grounding and installed skill/tool revisions using `enewbold-plugin-skill-orchestration`. Separate static fixtures from actual client evaluations.

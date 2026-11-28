@@ -350,3 +350,7 @@ Consume the approved `enewbold-api-orchestration-contracts` registry, versioned 
 ## JavaScript scaffold generation and verification
 
 Use `enewbold-javascript-oop-scaffolding` for new or materially revised MCP scaffolds after approved orchestration contracts. Adapt the fixture reference core to actual schemas and provider/SDK/host constraints; never expose the synthetic example or a stub transport as a public service.
+
+## Runtime plugin workflow orchestration
+
+Implement approved domain runtime workflows with `enewbold-plugin-skill-orchestration`. Keep runtime plugin packages separate from shared engineering skills; validate actual registered tool names, versions and packaging path, and preserve server-side enforcement.

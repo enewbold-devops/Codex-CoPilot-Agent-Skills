@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "contractRegistryRevision": "synthetic-phase5-example-1.0.0",
+  "status": "proposed",
+  "routes": [
+    {
+      "id": "topic_navigation",
+      "skillId": "public-topic-navigation",
+      "skillVersion": "1.0.0",
+      "intent": "Find public information about a topic",
+      "topic": "synthetic-topic",
+      "triggers": [
+        "Find information about a public topic"
+      ],
+      "exclusions": [
+        "Private records",
+        "Personal health information",
+        "Write requests"
+      ],
+      "steps": [
+        {
+          "toolId": "find_public_topic",
+          "toolVersion": "1.0.0",
+          "inputFrom": "user",
+          "handoffId": null
+        },
+        {
+          "toolId": "get_public_topic",
+          "toolVersion": "1.0.0",
+          "inputFrom": "handoff",
+          "handoffId": "topic_lookup"
+        }
+      ],
+      "maxToolCalls": 2,
+      "maxUpstreamCalls": 2,
+      "stopConditions": [
+        "Missing or ambiguous topic ID",
+        "No result",
+        "Invalid contract or upstream error",
+        "Budget exhausted"
+      ],
+      "responsePolicy": "Synthetic fixtures only; identify source and do not invent facts"
+    }
+  ]
+}

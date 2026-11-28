@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Engine runtime navigation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contractRegistryRevision",
+    "status",
+    "routes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "contractRegistryRevision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "approved",
+        "blocked"
+      ]
+    },
+    "routes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "skillId",
+          "skillVersion",
+          "intent",
+          "topic",
+          "triggers",
+          "exclusions",
+          "steps",
+          "maxToolCalls",
+          "maxUpstreamCalls",
+          "stopConditions",
+          "responsePolicy"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "skillId": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "skillVersion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "intent": {
+            "type": "string",
+            "minLength": 1
+          },
+          "topic": {
+            "type": "string",
+            "minLength": 1
+          },
+          "triggers": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "steps": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "toolId",
+                "toolVersion",
+                "inputFrom",
+                "handoffId"
+              ],
+              "properties": {
+                "toolId": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_-]*$"
+                },
+                "toolVersion": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "inputFrom": {
+                  "enum": [
+                    "user",
+                    "handoff"
+                  ]
+                },
+                "handoffId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "maxToolCalls": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "maxUpstreamCalls": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "stopConditions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "responsePolicy": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

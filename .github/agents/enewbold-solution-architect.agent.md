@@ -138,3 +138,7 @@ Design explicit boundaries and contracts that keep the system secure, maintainab
 ## API orchestration contract discipline
 
 Use `enewbold-api-orchestration-contracts` after opportunity qualification to produce the authoritative operation inventory, semantic tool registry and versioned handoff contracts. Resolve schema/pointer compatibility and required input coverage; hand off only a bounded approved design.
+
+## Runtime plugin workflow orchestration
+
+Use `enewbold-plugin-skill-orchestration` to derive bounded intent/topic routes from the approved versioned tool/handoff registry. Define required inputs, stops, grounding and optional resources/prompts; keep model guidance separate from server policy.
