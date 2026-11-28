@@ -334,3 +334,7 @@ Use `enewbold-javascript-oop-scaffolding` conventions when verifying generated c
 ## Runtime plugin workflow orchestration
 
 Independently evaluate runtime plugin skill activation/nonactivation, exact tool sequences, failure branches, grounding and installed skill/tool revisions using `enewbold-plugin-skill-orchestration`. Separate static fixtures from actual client evaluations.
+
+## Sites deployment and access gates
+
+Use `enewbold-chatgpt-sites-deployment` for actual Sites release-gate verification. Independently reproduce local SDK, hosted live read, intended visitor, anonymous external MCP (if required) and installed plugin tests. Distinguish NOT VERIFIED from PASS; do not publish to obtain evidence without authority.

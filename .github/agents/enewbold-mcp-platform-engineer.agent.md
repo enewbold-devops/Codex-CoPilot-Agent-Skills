@@ -354,3 +354,7 @@ Use `enewbold-javascript-oop-scaffolding` for new or materially revised MCP scaf
 ## Runtime plugin workflow orchestration
 
 Implement approved domain runtime workflows with `enewbold-plugin-skill-orchestration`. Keep runtime plugin packages separate from shared engineering skills; validate actual registered tool names, versions and packaging path, and preserve server-side enforcement.
+
+## Sites deployment and access gates
+
+Use `enewbold-chatgpt-sites-deployment` for approved Sites builds and host adapters. Verify the actual JS-compatible template, SDK protocol, trusted ingress/Host/Origin controls and runtime limits; do not publish or assume external endpoint access without authorization/evidence.

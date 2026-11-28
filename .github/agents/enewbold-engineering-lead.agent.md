@@ -166,3 +166,7 @@ Delegate `enewbold-javascript-oop-scaffolding` after contract approval. Require 
 ## Runtime plugin workflow orchestration
 
 Delegate `enewbold-plugin-skill-orchestration` after approved API contracts; require domain runtime skills, navigation/evaluation evidence and a clear packaging/distribution boundary. Do not treat design completion as publication approval.
+
+## Sites deployment and access gates
+
+Coordinate `enewbold-chatgpt-sites-deployment` after implementation and public security review. Require explicit deployment/publication authorization and independent Site, hosted MCP, anonymous external MCP and plugin evidence. No release while required gates remain unresolved.

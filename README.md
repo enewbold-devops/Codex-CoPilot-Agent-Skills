@@ -4,7 +4,7 @@
 
 This shared engineering framework can be imported into MCP solution repositories. Select the applicable architecture profile before substantial work. Tier 1 public stateless MCP is the preferred candidate for public opportunities; enterprise and durable controls remain available.
 
-It provides a shared engineering constitution, six specialist workspace agents, and twelve reusable skills that can be used from GitHub Copilot and OpenAI Codex in VS Code.
+It provides a shared engineering constitution, six specialist workspace agents, and thirteen reusable skills that can be used from GitHub Copilot and OpenAI Codex in VS Code.
 
 ## Included
 
@@ -37,6 +37,7 @@ It provides a shared engineering constitution, six specialist workspace agents, 
 - `.agents/skills/enewbold-api-orchestration-contracts/`
 - `.agents/skills/enewbold-javascript-oop-scaffolding/`
 - `.agents/skills/enewbold-plugin-skill-orchestration/`
+- `.agents/skills/enewbold-chatgpt-sites-deployment/`
 
 ### Setup guidance
 
