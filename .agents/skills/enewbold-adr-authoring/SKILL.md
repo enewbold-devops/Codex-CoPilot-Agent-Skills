@@ -1,6 +1,6 @@
 ---
 name: enewbold-adr-authoring
-description: Draft or update an Architecture Decision Record for the Azure-hosted MCP integration platform after an architectural decision has been proposed or approved. Use when architecture-impact analysis identifies a durable decision involving authentication, authorization, tenant isolation, credential storage, system-of-record ownership, persistence, MCP contract conventions, deployment topology, service boundaries, or another cross-cutting platform choice. Capture context, realistic alternatives, the decision, consequences, security/operational implications, and related records without inventing approval status.
+description: Draft or revise an ADR for any MCP architecture profile. Use for profile selection or exceptions, hosting/transport, identity, authorization, data ownership, persistence, public API rights, durable execution, MCP contracts or other significant decisions. Record alternatives, evidence, consequences and explicit approval provenance without accepting decisions on the Principal Engineer's behalf.
 ---
 
 # ADR Authoring
@@ -8,6 +8,10 @@ description: Draft or update an Architecture Decision Record for the Azure-hoste
 Follow the repository root `AGENTS.md`, relevant architecture documents, and existing ADR conventions.
 
 Use this skill to create a durable record of an architectural decision. Do not use it to silently make the decision itself.
+
+## Profile applicability and invariants
+
+Identify the selected profile using the [profile selection guide](../../../docs/architecture/profiles/README.md). Record whether the decision changes a profile, host, mandatory gate, contract or trust boundary. Document ESM JavaScript/OOP/JSDoc and runtime compatibility; no TypeScript requirement. Never use an ADR to silently waive constitutional constraints or actual security obligations. For Sites distinguish documented support from actual deployment, anonymous MCP interoperability and plugin distribution. Record dated authoritative evidence, unverified assumptions, decision owner, verification and rollback. Hosting limitations alone do not imply Tier 2 if data, identity, side effects and state remain Tier 1-compatible.
 
 ## Workflow
 

@@ -1,3 +1,3 @@
 interface:
-  display_name: "Architecture Impact Analysis"
-  short_description: "Analyze architecture impact before implementation"
+  display_name: "ENewbold Architecture Impact Analysis"
+  short_description: "Assess architecture impact across solution profiles"

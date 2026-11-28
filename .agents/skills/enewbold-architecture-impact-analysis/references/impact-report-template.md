@@ -43,3 +43,14 @@ Identify which specialist agents should participate.
 
 ## Decisions Required
 List decisions requiring Principal Engineer approval. Write `None` when there are none.
+
+## Profile and Evidence
+- Current/proposed profile and framework revision:
+- Solution record, accepted ADRs, audience and outcome:
+- Gate / source / date / status (PASS, FAIL, BLOCKED, NOT VERIFIED or justified N/A) / owner:
+- API rights, data sensitivity, operations, identity, state and hosting:
+- Infrastructure/dependency justification and JavaScript/runtime compatibility:
+- Site, hosted execution, external MCP and plugin access evidence separately:
+- Scope exclusions, reclassification triggers and approval needed:
+
+For Tier 1 document public abuse controls and independent requests. For Tier 2/3 document actual enterprise/durable boundaries. Do not represent an unverified design as release-ready.

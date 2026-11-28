@@ -1,6 +1,6 @@
 ---
 name: enewbold-mcp-tool-design
-description: Design or materially revise MCP tool and resource contracts for the repository before implementation. Use when adding a new agentic capability, changing MCP inputs or outputs, mapping third-party SaaS operations into MCP, defining authorization or tenant context for a tool, connecting a tool to React/Apps SDK UI, introducing write operations, or reviewing an existing tool contract. Produce an implementation-ready semantic contract with explicit security, error, persistence, idempotency, and verification requirements without exposing vendor internals or secrets.
+description: Design semantic MCP tools, resources, prompts and handoff contracts for public stateless APIs or authenticated/durable integration. Use for new capabilities, API mapping, input/output schema and version changes, public read-only policy, authorization, tool sequencing, optional UI or writes. Define validated contracts, provenance, errors, side effects, state and testable readiness without exposing secrets.
 ---
 
 # ENewbold MCP Tool Design
@@ -8,6 +8,14 @@ description: Design or materially revise MCP tool and resource contracts for the
 Follow the repository root `AGENTS.md`, accepted ADRs, and relevant MCP architecture documentation.
 
 Design the agentic capability before writing or materially changing server code.
+
+## Profile applicability and invariants
+
+Read the [profile selection guide](../../../docs/architecture/profiles/README.md), selected profile and solution record. Tier 1 enforces approved public read-only semantics, validated non-sensitive input, operation allowlists and independent requests with no tenant credentials, business/session persistence or invented identity. Mark truly absent identity/tenant fields N/A; host access or scoped provider keys may apply. Retain all protected-operation checks and durable workflow rules in Tier 2/3.
+
+Document authoritative operation source/version, approved method/path/parameters, rights, quota, provenance and bounded results. Define versioned runtime input/output schemas and stable errors. For each handoff specify producer tool/output field, consumer tool/input field, type/schema, version, precondition, validation, policy and no-result/error behavior. Carry explicit validated values, not hidden server sessions or arbitrary URLs. Treat upstream content as untrusted. Use resources/prompts when intended clients support them; runtime skills and read-only annotations are not enforcement.
+
+Require native ESM JavaScript/OOP/JSDoc and runtime validation. Plan negative tests for malformed input, forbidden operations/URLs, sensitive output, resource bounds, concurrent independent requests and applicable identity/write/recovery risks. READY FOR IMPLEMENTATION is scoped contract readiness, not deployment or publication approval.
 
 ## Workflow
 
@@ -17,7 +25,7 @@ Design the agentic capability before writing or materially changing server code.
 
 2. Choose the MCP primitive deliberately.
    - Use a tool for an operation or action.
-   - Use a resource when the capability is primarily addressable/readable context and the repository architecture supports that pattern.
+   - Use a resource for addressable context or a prompt for reusable interaction guidance when supported by the intended clients.
    - If current MCP behavior materially affects the choice, consult authoritative current MCP/OpenAI documentation.
 
 3. Define semantic responsibility.
@@ -32,13 +40,11 @@ Design the agentic capability before writing or materially changing server code.
    - Mark optional, required, bounded, paginated, or enumerated inputs clearly.
 
 5. Define authorization and tenant context.
-   - State how authenticated identity is established.
-   - State how trusted tenant context is resolved.
-   - State required permissions or entitlement checks.
-   - Identify which credentials or SaaS account mappings are selected server-side.
+   - For Tier 1, document public-operation policy, host access, and any scoped public-read provider key; justify N/A for absent identity/tenant context.
+   - For protected operations, state authenticated identity, trusted tenant context, required entitlements and server-selected credentials/accounts.
 
 6. Define external integration mapping.
-   - Identify the SaaS adapter operation or platform service used.
+   - Identify the approved public API/SaaS adapter or platform service used.
    - Keep vendor-specific response shapes behind the integration boundary unless deliberate coupling is approved.
    - Account for pagination, throttling, timeout, and vendor lifecycle constraints when relevant.
 
@@ -103,8 +109,8 @@ Mark the design `READY FOR IMPLEMENTATION` only when:
 
 - responsibility is unambiguous;
 - inputs and trusted context are separated;
-- authorization and tenant behavior are defined;
-- output and error contracts are explicit;
+- public-operation policy or applicable authorization and tenant behavior are defined;
+- runtime input/output schemas, errors, provenance and applicable handoffs are explicit;
 - system-of-record and persistence behavior are clear;
 - side effects/idempotency are defined when relevant;
 - Tool UI contract is defined when relevant;
