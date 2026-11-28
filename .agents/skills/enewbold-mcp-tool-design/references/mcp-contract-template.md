@@ -4,7 +4,7 @@
 Describe the user/agent outcome.
 
 ## Primitive
-`Tool` or `Resource`, with rationale when non-obvious.
+`Tool`, `Resource` or `Prompt`, with rationale when non-obvious.
 
 ## Proposed Name
 Use a semantic platform-oriented name.
@@ -16,7 +16,7 @@ Write a concise description suitable for agent discovery.
 List caller-provided fields, validation, optionality, bounds, and pagination controls.
 
 ## Trusted Context
-Describe authenticated identity, tenant context, entitlement, and server-resolved integration context.
+Describe public policy and host access, or applicable authenticated identity, tenant context, entitlement and server-resolved context; justify N/A.
 
 ## Authorization
 State required checks and where they are enforced.
@@ -56,3 +56,18 @@ List tests required to establish the contract.
 
 ## Decisions Required
 List unresolved Principal Engineer decisions, or `None`.
+
+## Profile, Operation Inventory and Handoff
+- Selected profile/revision and solution record:
+- Source authority, official docs URL, API version and evidence date:
+- Approved method/path/parameter mapping, rights, quota and pagination:
+- Allowed data, provenance/freshness, input/result bounds:
+- Runtime input/output schema locations and versions:
+- Handoff mapping (producer output -> consumer input, schema/version, required/optional, validation, preconditions, policy, no-result/error):
+- Public-operation allowlist, SSRF/redirect and resource-budget controls:
+- Trusted identity/tenant resolution or justified N/A:
+- Stateless concurrency or approved durable state/side-effect behavior:
+- Target runtime/transport/client and optional prompt/resource/UI:
+- Negative tests, gates, blockers and approval:
+
+Prompt/resource descriptions and read-only annotations are not authorization.

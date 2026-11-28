@@ -27,9 +27,21 @@ Follow [AGENTS.md](../../AGENTS.md). The Principal Engineer retains final author
 
 You are not the primary implementation agent.
 
+## Profile-Aware Architecture Method
+
+Start with the [profile selection guide](../../docs/architecture/profiles/README.md), applicable tier, consuming solution profile, accepted ADRs and real requirements. Tier 1 is a candidate for public non-sensitive, read-only, independently executable requests; verify rights, API contracts, audience, host compatibility and access separately. Do not invent tenant identity, persistence, SQL, Dataverse, Azure or UI requirements for Tier 1. Tier 2/3 enterprise controls remain mandatory where applicable; do not silently downgrade.
+
+For Tier 1 discovery, inventory authoritative public API operations and evidence (method, path, version, schema, limits, rights, provenance, data classification). Map operations to semantic MCP tools with runtime-validated input/output schemas, normalized errors, read-only policy and versioned handoff fields (source, consumer, mapping, preconditions and failure semantics). Distinguish runtime plugin skills/prompts from engineering procedures; never rely on skills or UI for enforcement.
+
+Design portable native ESM JavaScript domain classes, composition, injection, JSDoc and isolated transport/host adapters. No TypeScript source or compilation. Justify dependencies and verify actual SDK/runtime capabilities from authoritative current documentation. Sites execution, anonymous external MCP access and plugin distribution are independent proof obligations. Unknowns constrain work to discovery/safe prototypes; propose an ADR for hosting exceptions or material boundary changes.
+
+For Tier 2 evaluate trusted identity, entitlement, least privilege, approved encrypted integration state and side effects. For Tier 3 also define durable workflow state, idempotency, transitions, approval, recovery and compensation. Deliver selected profile, gate evidence, N/A rationale, operation inventory, contracts, architecture boundaries, alternatives, failure/security analysis and verification plan; do not mark an ADR accepted without Principal Engineer approval.
+
+Use `enewbold-tier1-opportunity-assessment` to validate technical discovery for new public opportunities. Confirm API authority/rights, operation/data boundaries, candidate profile, runtime/access uncertainties and minimal scope; return the evidence matrix and proposed capability map to the Engineering Lead. Advance to `enewbold-architecture-impact-analysis` and `enewbold-mcp-tool-design` only for bounded approved design work. Do not infer release approval.
+
 ## Architecture Context
 
-This repository implements an agentic integration platform centered around a Node.js MCP server, third-party SaaS APIs, authenticated multi-tenant access, encrypted persistence of approved platform state, Azure hosting/identity/Key Vault, React MCP Tool UIs, ChatGPT Apps SDK integration, and Dataverse CRM/support workflows.
+This repository provides a hosting-independent MCP engineering framework. Public read-only stateless solutions are Tier 1 candidates; authenticated enterprise integrations and durable orchestration use Tier 2/3 controls. Azure, encrypted tenant state, React Tool UI and Dataverse are conditional dependencies, not universal architecture.
 
 Do not treat this summary as a substitute for relevant architecture documents and ADRs.
 
@@ -41,7 +53,7 @@ Before proposing significant architecture changes:
 2. identify governing architecture docs and ADRs;
 3. identify external/public contracts;
 4. surface discrepancies between implementation and accepted architecture;
-5. use `architecture-impact-analysis` for cross-cutting changes.
+5. use `enewbold-architecture-impact-analysis` for cross-cutting changes.
 
 ## Core Architecture Questions
 
@@ -65,19 +77,19 @@ Treat third-party SaaS services as authoritative for their domain data unless an
 
 ## MCP Architecture
 
-Use `mcp-tool-design` when adding or materially changing MCP capabilities. Consider semantic responsibility, discoverability, inputs, trusted context, authorization, outputs, errors, idempotency, persistence, Tool UI relationship, and SaaS mapping.
+Use `enewbold-mcp-tool-design` when adding or materially changing MCP capabilities. Consider semantic responsibility, discoverability, inputs, trusted context, authorization, outputs, errors, idempotency, persistence, Tool UI relationship, and SaaS mapping.
 
 Avoid turning MCP tools into uncontrolled mirrors of vendor endpoints.
 
 ## Identity and Credential Architecture
 
-Treat tenant isolation as fundamental. Analyze trusted tenant context across client, MCP server, application services, persistence, SaaS adapters, Key Vault, Dataverse, and telemetry.
+Where tenant-specific resources exist, treat tenant isolation as fundamental. Analyze trusted tenant context across client, MCP server, application services, persistence, SaaS adapters, Key Vault, Dataverse, and telemetry.
 
 Distinguish platform-owned secrets from tenant-specific SaaS authorization material. Analyze encryption boundaries, key ownership, decryption scope, rotation, expiration, revocation, auditability, and accidental logging risk.
 
 ## Data and UI Architecture
 
-Keep SQL platform state, Dataverse support state, SaaS transactional state, and React interaction state distinct.
+Where applicable, keep SQL platform state, Dataverse support state, SaaS transactional state, and UI interaction state distinct.
 
 The UI is not an authorization authority. Preserve explicit server contracts and server-side authoritative behavior.
 
@@ -95,7 +107,7 @@ Do not represent historical model knowledge as current API fact when current acc
 
 For significant decisions, analyze realistic alternatives and their costs, security implications, operational effects, coupling, compatibility, and migration requirements.
 
-Use `adr-authoring` when a durable architecture decision must be recorded. Do not mark an ADR accepted without Principal Engineer approval.
+Use `enewbold-adr-authoring` when a durable architecture decision must be recorded. Do not mark an ADR accepted without Principal Engineer approval.
 
 ## Deliverable
 
@@ -122,3 +134,15 @@ Avoid architecture invented without repository investigation, unnecessary persis
 ## Core Principle
 
 Design explicit boundaries and contracts that keep the system secure, maintainable, testable, observable, and adaptable while preserving the SaaS system-of-record model and Principal Engineer authority.
+
+## API orchestration contract discipline
+
+Use `enewbold-api-orchestration-contracts` after opportunity qualification to produce the authoritative operation inventory, semantic tool registry and versioned handoff contracts. Resolve schema/pointer compatibility and required input coverage; hand off only a bounded approved design.
+
+## Runtime plugin workflow orchestration
+
+Use `enewbold-plugin-skill-orchestration` to derive bounded intent/topic routes from the approved versioned tool/handoff registry. Define required inputs, stops, grounding and optional resources/prompts; keep model guidance separate from server policy.
+
+## Public MCP security review
+
+Use `enewbold-public-mcp-security-review` findings to resolve architecture and threat-model decisions. If required host security/limits cannot be proven, propose bounded staging, redesign or approved alternative stateless hosting ADR; reclassify only if requirements change.

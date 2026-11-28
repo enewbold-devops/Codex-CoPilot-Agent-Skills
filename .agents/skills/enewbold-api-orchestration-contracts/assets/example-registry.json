@@ -1,0 +1,287 @@
+{
+  "registryVersion": "1.0.0",
+  "profile": "tier-1",
+  "status": "proposed",
+  "sources": [
+    {
+      "id": "synthetic",
+      "publisher": "Synthetic example only",
+      "origin": "https://example.invalid",
+      "documentation": "https://example.invalid/docs",
+      "apiVersion": "example-v1",
+      "evidenceDate": "2026-11-28",
+      "rights": "Not verified; illustrative only",
+      "access": "No live calls authorized",
+      "evidenceStatus": "NOT VERIFIED"
+    }
+  ],
+  "operations": [
+    {
+      "id": "find_topic",
+      "sourceId": "synthetic",
+      "method": "GET",
+      "path": "/topics/search",
+      "semantics": "read-only",
+      "approved": false,
+      "parameters": [
+        {
+          "name": "q",
+          "location": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      ],
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topicId",
+          "source"
+        ],
+        "properties": {
+          "topicId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      },
+      "pagination": "none",
+      "quota": "unknown",
+      "timeoutMs": 3000,
+      "maxResponseBytes": 16384,
+      "maxPages": 1,
+      "errors": [
+        "UPSTREAM_FAILURE",
+        "NOT_FOUND"
+      ],
+      "dataScope": "synthetic public topic metadata"
+    },
+    {
+      "id": "get_topic",
+      "sourceId": "synthetic",
+      "method": "GET",
+      "path": "/topics/{topicId}",
+      "semantics": "read-only",
+      "approved": false,
+      "parameters": [
+        {
+          "name": "topicId",
+          "location": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      ],
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topicId",
+          "title",
+          "source"
+        ],
+        "properties": {
+          "topicId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      },
+      "pagination": "none",
+      "quota": "unknown",
+      "timeoutMs": 3000,
+      "maxResponseBytes": 16384,
+      "maxPages": 1,
+      "errors": [
+        "UPSTREAM_FAILURE",
+        "NOT_FOUND"
+      ],
+      "dataScope": "synthetic public topic metadata"
+    }
+  ],
+  "tools": [
+    {
+      "id": "find_public_topic",
+      "version": "1.0.0",
+      "description": "Find a public topic by keyword",
+      "operationIds": [
+        "find_topic"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "query"
+        ],
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topicId",
+          "source"
+        ],
+        "properties": {
+          "topicId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      },
+      "policy": "Fixture only; no live endpoint access",
+      "provenance": "Return source",
+      "noResult": "Explicit NOT_FOUND; do not call detail",
+      "errors": [
+        "INVALID_INPUT",
+        "NOT_FOUND",
+        "UPSTREAM_FAILURE"
+      ]
+    },
+    {
+      "id": "get_public_topic",
+      "version": "1.0.0",
+      "description": "Retrieve a public topic by identifier",
+      "operationIds": [
+        "get_topic"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topicId"
+        ],
+        "properties": {
+          "topicId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topicId",
+          "title",
+          "source"
+        ],
+        "properties": {
+          "topicId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      },
+      "policy": "Fixture only; no live endpoint access",
+      "provenance": "Return source",
+      "noResult": "Explicit NOT_FOUND",
+      "errors": [
+        "INVALID_INPUT",
+        "NOT_FOUND",
+        "UPSTREAM_FAILURE"
+      ]
+    }
+  ],
+  "handoffs": [
+    {
+      "id": "topic_lookup",
+      "producer": {
+        "toolId": "find_public_topic",
+        "version": "1.0.0"
+      },
+      "consumer": {
+        "toolId": "get_public_topic",
+        "version": "1.0.0"
+      },
+      "mappings": [
+        {
+          "from": "/topicId",
+          "to": "/topicId",
+          "required": true,
+          "cardinality": "one-to-one",
+          "transform": "identity"
+        }
+      ],
+      "preconditions": [
+        "Producer result passes output schema",
+        "Topic ID present"
+      ],
+      "policy": "Validate consumer input; no hidden session",
+      "onMissing": "Stop and report no matching topic",
+      "onError": "Stop and return normalized error",
+      "invoker": "agent"
+    }
+  ],
+  "intents": [
+    {
+      "id": "topic_navigation",
+      "description": "Navigate from search to detail",
+      "toolIds": [
+        "find_public_topic",
+        "get_public_topic"
+      ],
+      "maxSteps": 2,
+      "maxUpstreamCalls": 2
+    }
+  ],
+  "constraints": {
+    "dataScope": "Synthetic fixtures only",
+    "identity": "No tenant or end-user identity",
+    "state": "Independent calls",
+    "maxUpstreamCallsPerRequest": 1,
+    "policy": "No live access until rights and scope approved"
+  },
+  "unresolved": [
+    "All upstream endpoints are fictional",
+    "Source rights and actual deployment are unverified"
+  ]
+}

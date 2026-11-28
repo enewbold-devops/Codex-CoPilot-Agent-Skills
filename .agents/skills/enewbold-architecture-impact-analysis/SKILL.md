@@ -1,6 +1,6 @@
 ---
 name: enewbold-architecture-impact-analysis
-description: Analyze the architectural impact of a proposed change in the Azure-hosted MCP integration platform. Use when adding or materially changing capabilities, service boundaries, authentication or tenant behavior, persistence, MCP contracts, SaaS integrations, Tool UI contracts, Dataverse flows, deployment topology, or other cross-cutting behavior. Produce a bounded impact analysis, identify affected contracts and risks, determine whether an ADR or security review is required, and surface decisions that need Principal Engineer approval before implementation.
+description: Analyze architecture impact and profile fit for public stateless MCP, enterprise integrations and durable orchestration. Use before substantial changes to boundaries, MCP contracts, APIs, data ownership, identity, state, hosting, UI or other cross-cutting behavior. Identify gates, risks, alternatives, ADR/security review needs and Principal Engineer decisions; do not implement production code.
 ---
 
 # ENewbold Architecture Impact Analysis Skill
@@ -8,6 +8,14 @@ description: Analyze the architectural impact of a proposed change in the Azure-
 Follow the repository root `AGENTS.md` and accepted ADRs as governing constraints.
 
 Use this skill to determine what a proposed change affects before implementation. Do not use it as a substitute for implementation, security review, or acceptance testing.
+
+## Profile applicability and invariants
+
+Read the [profile selection guide](../../../docs/architecture/profiles/README.md), selected profile and solution record. For new public opportunities test Tier 1 candidacy before introducing infrastructure; for existing systems preserve accepted constraints. Separate non-sensitive public reads, protected resources/writes and durable execution. Mandatory gates override scoring; unknown evidence limits work to discovery or bounded safe prototypes.
+
+For Tier 1 evaluate authoritative API docs/rights, data classification, approved read semantics, independent requests, user value, host compatibility, and public abuse controls. Verify Site access, Sites execution, external anonymous MCP and plugin distribution separately when required. Do not invent Azure, tenancy, SQL, Dataverse or UI. A hosting incompatibility alone does not imply Tier 2; propose an approved stateless alternative. Retain applicable Tier 2/3 controls, including workflow durability, authorization, idempotency, recovery and audit in Tier 3.
+
+Evaluate native ESM JavaScript classes, JSDoc, runtime schemas, composition, isolated adapters and justified dependencies; no TypeScript source/compilation. Distinguish API inventory, semantic tool contracts, handoff fields and runtime plugin guidance from server enforcement. Record gate status, evidence source/date, N/A rationale, owners and decisions.
 
 ## Workflow
 
@@ -25,7 +33,7 @@ Use this skill to determine what a proposed change affects before implementation
 3. Map affected boundaries.
    Evaluate only dimensions relevant to the task:
    - MCP server and tool/resource contracts
-   - third-party SaaS adapters
+   - public API and third-party SaaS adapters
    - authentication and authorization
    - trusted tenant context and tenant isolation
    - token or secret handling
@@ -39,7 +47,7 @@ Use this skill to determine what a proposed change affects before implementation
 4. Trace data ownership and trust.
    - Identify the system of record for each affected data class.
    - Identify where untrusted input becomes trusted context.
-   - Identify where tenant-scoped data or credentials are selected.
+   - Where protected resources exist, identify where tenant-scoped data or credentials are selected; otherwise explain N/A.
    - Challenge unnecessary replication of third-party SaaS business data.
 
 5. Identify contract impact.

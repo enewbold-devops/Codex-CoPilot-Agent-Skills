@@ -1,0 +1,3 @@
+interface:
+  display_name: "ENewbold Runtime Plugin Skill Orchestration"
+  short_description: "Design grounded runtime skills and MCP tool workflows"

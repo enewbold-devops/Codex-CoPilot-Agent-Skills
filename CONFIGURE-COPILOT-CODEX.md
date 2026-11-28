@@ -212,7 +212,7 @@ Ask:
 
 Then test:
 
-> Use the mcp-tool-design skill to design, but not implement, a read-only merchant catalog MCP capability.
+> Use the enewbold-mcp-tool-design skill to design, but not implement, a read-only merchant catalog MCP capability.
 
 Confirm that Codex uses the repository constitution and the skill output contract.
 

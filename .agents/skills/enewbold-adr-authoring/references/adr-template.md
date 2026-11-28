@@ -37,3 +37,9 @@ Describe contract changes, schema/state migration, rollout sequencing, and backw
 ## Related Decisions and Documents
 
 Link related ADRs and architecture documents.
+
+## Profile and Gate Impact
+Record current/proposed profile, governing revision, affected gates, dated evidence, constraints and any hosting exception or reclassification. Justify added infrastructure; distinguish actual deployment/access evidence from assumptions. Record JavaScript and contract portability implications.
+
+## Approval and Verification
+Record approval provenance (or Proposed), prerequisites, security/verification evidence, release conditions and rollback/reconsideration triggers. A commit does not itself constitute acceptance.

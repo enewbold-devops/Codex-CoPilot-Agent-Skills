@@ -1,0 +1,3 @@
+interface:
+  display_name: "ENewbold API Orchestration and Handoff Contracts"
+  short_description: "Design versioned API, MCP tool and handoff registries"

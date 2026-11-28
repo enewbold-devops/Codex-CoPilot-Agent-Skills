@@ -1,6 +1,6 @@
 ---
 name: enewbold-tenant-security-review
-description: Perform a threat-oriented review of multi-tenant behavior in the MCP integration platform. Use when changes affect authentication, authorization, tenant resolution, SaaS account selection, token lookup, SQL tenant scoping, MCP tools, Dataverse correlation, caching, write operations, or any path where one customer might influence access to another customer's data or credentials. Trace trusted tenant context end to end, test substitution and cross-tenant abuse cases, and produce evidence-based findings without modifying production code.
+description: Independently review actual multi-tenant or protected account trust boundaries for MCP integrations, especially Tier 2 and Tier 3. Use when identity, authorization, account selection, credentials, tenant-scoped persistence, caching, writes or asynchronous workers could enable cross-tenant access. Trace trusted context and negative cases. Do not activate solely for anonymous public reads without tenant boundaries.
 ---
 
 # ENewbold Tenant Security Review
@@ -8,6 +8,10 @@ description: Perform a threat-oriented review of multi-tenant behavior in the MC
 Follow the repository root `AGENTS.md`, accepted ADRs, and relevant authentication/persistence architecture.
 
 Review whether tenant identity and authorization remain trustworthy across the entire operation path.
+
+## Profile applicability and invariants
+
+Read the [profile selection guide](../../../docs/architecture/profiles/README.md) and selected solution record. Establish applicability before reviewing. If Tier 1 genuinely has no private/customer data, account selection, tenant context or tenant-owned credentials, record N/A with evidence and route public trust-boundary assessment to the Security Reviewer under the Tier 1 profile. Absence of tenancy does not prove security. If protected resources are discovered, escalate reclassification; never invent a tenant model or waive isolation. Preserve the review below for applicable Tier 2/3 paths, including asynchronous workers, callbacks, approval/status lookups, replay and duplicate events. Distinguish inspected, exercised and unverified paths.
 
 ## Workflow
 

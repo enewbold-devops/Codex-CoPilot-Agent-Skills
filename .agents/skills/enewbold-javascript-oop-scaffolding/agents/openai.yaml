@@ -1,0 +1,3 @@
+interface:
+  display_name: "ENewbold JavaScript OOP Scaffolding"
+  short_description: "Generate documented native JavaScript MCP scaffolds"

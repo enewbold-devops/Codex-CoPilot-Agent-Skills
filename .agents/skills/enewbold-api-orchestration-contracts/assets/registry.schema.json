@@ -1,0 +1,496 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Engine API orchestration registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "registryVersion",
+    "profile",
+    "status",
+    "sources",
+    "operations",
+    "tools",
+    "handoffs",
+    "intents",
+    "constraints",
+    "unresolved"
+  ],
+  "properties": {
+    "registryVersion": {
+      "const": "1.0.0"
+    },
+    "profile": {
+      "enum": [
+        "tier-1",
+        "tier-2",
+        "tier-3"
+      ]
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "approved",
+        "blocked"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "publisher",
+          "origin",
+          "documentation",
+          "apiVersion",
+          "evidenceDate",
+          "rights",
+          "access",
+          "evidenceStatus"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "publisher": {
+            "type": "string",
+            "minLength": 1
+          },
+          "origin": {
+            "type": "string",
+            "format": "uri"
+          },
+          "documentation": {
+            "type": "string",
+            "format": "uri"
+          },
+          "apiVersion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "rights": {
+            "type": "string",
+            "minLength": 1
+          },
+          "access": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceStatus": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "BLOCKED",
+              "NOT VERIFIED",
+              "N/A"
+            ]
+          }
+        }
+      }
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "sourceId",
+          "method",
+          "path",
+          "semantics",
+          "approved",
+          "parameters",
+          "responseSchema",
+          "pagination",
+          "quota",
+          "timeoutMs",
+          "maxResponseBytes",
+          "maxPages",
+          "errors",
+          "dataScope"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "sourceId": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "method": {
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE",
+              "HEAD"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^/[^?#]*$"
+          },
+          "semantics": {
+            "enum": [
+              "read-only",
+              "write"
+            ]
+          },
+          "approved": {
+            "type": "boolean"
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "location",
+                "required",
+                "schema"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "location": {
+                  "enum": [
+                    "path",
+                    "query",
+                    "header",
+                    "body"
+                  ]
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "responseSchema": {
+            "type": "object"
+          },
+          "pagination": {
+            "type": "string",
+            "minLength": 1
+          },
+          "quota": {
+            "type": "string",
+            "minLength": 1
+          },
+          "timeoutMs": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "maxResponseBytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "maxPages": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "dataScope": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "description",
+          "operationIds",
+          "inputSchema",
+          "outputSchema",
+          "policy",
+          "provenance",
+          "noResult",
+          "errors"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operationIds": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*$"
+            }
+          },
+          "inputSchema": {
+            "type": "object"
+          },
+          "outputSchema": {
+            "type": "object"
+          },
+          "policy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "provenance": {
+            "type": "string",
+            "minLength": 1
+          },
+          "noResult": {
+            "type": "string",
+            "minLength": 1
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "handoffs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "producer",
+          "consumer",
+          "mappings",
+          "preconditions",
+          "policy",
+          "onMissing",
+          "onError",
+          "invoker"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "producer": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "toolId",
+              "version"
+            ],
+            "properties": {
+              "toolId": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_-]*$"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "consumer": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "toolId",
+              "version"
+            ],
+            "properties": {
+              "toolId": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_-]*$"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "mappings": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "from",
+                "to",
+                "required",
+                "cardinality",
+                "transform"
+              ],
+              "properties": {
+                "from": {
+                  "type": "string",
+                  "pattern": "^(?:/(?:[^~/]|~[01])*)*$"
+                },
+                "to": {
+                  "type": "string",
+                  "pattern": "^(?:/(?:[^~/]|~[01])*)*$"
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "cardinality": {
+                  "enum": [
+                    "one-to-one",
+                    "one-to-many",
+                    "many-to-one"
+                  ]
+                },
+                "transform": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "preconditions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "policy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "onMissing": {
+            "type": "string",
+            "minLength": 1
+          },
+          "onError": {
+            "type": "string",
+            "minLength": 1
+          },
+          "invoker": {
+            "enum": [
+              "agent",
+              "server"
+            ]
+          }
+        }
+      }
+    },
+    "intents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "description",
+          "toolIds",
+          "maxSteps",
+          "maxUpstreamCalls"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "toolIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*$"
+            }
+          },
+          "maxSteps": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "maxUpstreamCalls": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataScope",
+        "identity",
+        "state",
+        "maxUpstreamCallsPerRequest",
+        "policy"
+      ],
+      "properties": {
+        "dataScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "maxUpstreamCallsPerRequest": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "policy": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 ---
 name: enewbold-azure-identity-review
-description: Review Azure identity and access design for the MCP platform. Use when changes affect App Service or workload identity, managed identity, Key Vault, Azure SQL access, environment separation, service principals, developer/local authentication, RBAC, secrets, or agent access to cloud resources. Determine which principal accesses which resource for what operation, prefer identity-based access where supported, verify least privilege and dev/test/prod separation, and identify permissions that exceed the workload's required capabilities.
+description: Review actual Azure identity and resource-access dependencies for MCP solutions using Azure, typically Tier 2/3. Use for workload identity, managed identity, Key Vault, SQL, RBAC, service principals, developer or CI access and environment separation. Establish least privilege and actual permissions. Do not require Azure identity for Sites-only Tier 1.
 ---
 
 # Azure Identity Review
@@ -8,6 +8,10 @@ description: Review Azure identity and access design for the MCP platform. Use w
 Follow the repository root `AGENTS.md`, accepted ADRs, and relevant deployment/authentication architecture.
 
 Review real technical access controls rather than relying on agent instructions as protection.
+
+## Profile applicability and invariants
+
+Read the [profile selection guide](../../../docs/architecture/profiles/README.md) and solution record. Confirm an actual approved Azure dependency before activating this review. For Sites-only Tier 1 without Azure access, record justified N/A and route host access, scoped public-read secrets and deployment controls to the Security Reviewer under the Tier 1 profile. Do not provision Azure merely to satisfy the checklist. Escalate material host/profile changes. For Tier 3 review worker, queue, workflow, callback and deployment identities separately where applicable. Use direct evidence of permissions; mark inaccessible live configuration NOT VERIFIED or BLOCKED.
 
 ## Workflow
 

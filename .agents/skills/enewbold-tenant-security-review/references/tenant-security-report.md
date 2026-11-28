@@ -29,3 +29,6 @@ List security-relevant paths that could not be established.
 
 ## Required Follow-up
 Identify responsible role and next verification/review step.
+
+## Applicability and Profile
+Record selected profile, actual protected resource/tenant boundary and evidence. If genuinely absent, document N/A rationale and route public security separately. For Tier 3 include asynchronous jobs, callbacks, approval/status and recovery. Distinguish inspected, exercised and NOT VERIFIED. Never waive genuine controls.
