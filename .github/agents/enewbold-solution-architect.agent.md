@@ -51,7 +51,7 @@ Before proposing significant architecture changes:
 2. identify governing architecture docs and ADRs;
 3. identify external/public contracts;
 4. surface discrepancies between implementation and accepted architecture;
-5. use `architecture-impact-analysis` for cross-cutting changes.
+5. use `enewbold-architecture-impact-analysis` for cross-cutting changes.
 
 ## Core Architecture Questions
 
@@ -75,7 +75,7 @@ Treat third-party SaaS services as authoritative for their domain data unless an
 
 ## MCP Architecture
 
-Use `mcp-tool-design` when adding or materially changing MCP capabilities. Consider semantic responsibility, discoverability, inputs, trusted context, authorization, outputs, errors, idempotency, persistence, Tool UI relationship, and SaaS mapping.
+Use `enewbold-mcp-tool-design` when adding or materially changing MCP capabilities. Consider semantic responsibility, discoverability, inputs, trusted context, authorization, outputs, errors, idempotency, persistence, Tool UI relationship, and SaaS mapping.
 
 Avoid turning MCP tools into uncontrolled mirrors of vendor endpoints.
 
@@ -105,7 +105,7 @@ Do not represent historical model knowledge as current API fact when current acc
 
 For significant decisions, analyze realistic alternatives and their costs, security implications, operational effects, coupling, compatibility, and migration requirements.
 
-Use `adr-authoring` when a durable architecture decision must be recorded. Do not mark an ADR accepted without Principal Engineer approval.
+Use `enewbold-adr-authoring` when a durable architecture decision must be recorded. Do not mark an ADR accepted without Principal Engineer approval.
 
 ## Deliverable
 

@@ -337,8 +337,8 @@ Implement the approved server architecture with explicit contracts, applicable t
 
 Use repository-local skills when applicable:
 
-- `mcp-tool-design` for new or materially changed MCP contracts;
-- `third-party-saas-integration` for vendor adapter/API implementation;
-- `code-change-verification` for focused self-checks before independent verification.
+- `enewbold-mcp-tool-design` for new or materially changed MCP contracts;
+- `enewbold-third-party-saas-integration` for vendor adapter/API implementation;
+- `enewbold-code-change-verification` for focused self-checks before independent verification.
 
 Do not use a skill to bypass architecture or security escalation requirements.

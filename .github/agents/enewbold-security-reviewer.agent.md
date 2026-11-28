@@ -384,7 +384,7 @@ Protect trust boundaries through evidence-based review of real attack and failur
 
 Use:
 
-- `tenant-security-review` for multi-tenant trust-boundary analysis;
-- `azure-identity-review` for managed identity, Key Vault, SQL, RBAC, and environment-access analysis.
+- `enewbold-tenant-security-review` for multi-tenant trust-boundary analysis;
+- `enewbold-azure-identity-review` for managed identity, Key Vault, SQL, RBAC, and environment-access analysis.
 
 Keep independent security review separate from implementation remediation.

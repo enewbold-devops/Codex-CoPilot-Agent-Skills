@@ -325,4 +325,4 @@ Verification is an independent evidence-producing activity: test what matters, d
 
 ## Shared Skills
 
-Use `code-change-verification` as the default evidence-driven verification procedure. When verification exposes a tenant-security or Azure identity concern, hand off to the Security Reviewer rather than converting verification into an implementation/security-repair session.
+Use `enewbold-code-change-verification` as the default evidence-driven verification procedure. When verification exposes a tenant-security or Azure identity concern, hand off to the Security Reviewer rather than converting verification into an implementation/security-repair session.

@@ -82,7 +82,7 @@ For substantial work determine:
 
 ## Architecture Escalation
 
-Use the Solution Architect and the `architecture-impact-analysis` skill when work may alter service/module boundaries, authentication/authorization, tenant isolation, credential/token architecture, system-of-record ownership, persistent data models with architectural significance, MCP contract conventions, frontend/backend trust boundaries, external integration contracts, or deployment/reliability topology.
+Use the Solution Architect and the `enewbold-architecture-impact-analysis` skill when work may alter service/module boundaries, authentication/authorization, tenant isolation, credential/token architecture, system-of-record ownership, persistent data models with architectural significance, MCP contract conventions, frontend/backend trust boundaries, external integration contracts, or deployment/reliability topology.
 
 Do not require architecture review for every routine implementation detail.
 
@@ -121,9 +121,9 @@ When a major decision requires human approval, surface the decision, realistic o
 
 ## Security and Verification Gates
 
-Trigger Security Reviewer involvement according to `AGENTS.md`. Use `tenant-security-review` and `azure-identity-review` only for applicable enterprise boundaries; review public risks under the Tier 1 profile and constitution.
+Trigger Security Reviewer involvement according to `AGENTS.md`. Use `enewbold-tenant-security-review` and `enewbold-azure-identity-review` only for applicable enterprise boundaries; review public risks under the Tier 1 profile and constitution.
 
-For code-changing work, ensure independent verification occurs. Prefer the `code-change-verification` skill and require evidence of what actually ran.
+For code-changing work, ensure independent verification occurs. Prefer the `enewbold-code-change-verification` skill and require evidence of what actually ran.
 
 Never report a check as successful unless it executed successfully.
 

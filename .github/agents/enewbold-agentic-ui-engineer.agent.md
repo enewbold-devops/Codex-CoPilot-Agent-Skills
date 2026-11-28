@@ -318,6 +318,6 @@ Build a clear agentic user experience on explicit contracts while keeping author
 
 ## Shared Skills
 
-Use `apps-sdk-tool-ui` for substantial React MCP Tool UI and ChatGPT Apps SDK workflows. Use `code-change-verification` for focused implementation checks before handing the work to the independent Verification Engineer.
+Use `enewbold-apps-sdk-tool-ui` for substantial React MCP Tool UI and ChatGPT Apps SDK workflows. Use `enewbold-code-change-verification` for focused implementation checks before handing the work to the independent Verification Engineer.
 
 Do not use client-side skills to redefine server contracts or authorization behavior silently.
